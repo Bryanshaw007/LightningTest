@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>Picks up a pending New Address intent from sessionStorage and opens the modal on the Account record page.</description>
+</AuraDefinitionBundle>

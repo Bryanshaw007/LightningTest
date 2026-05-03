@@ -1,0 +1,11 @@
+<aura:component implements="lightning:actionOverride,force:hasRecordId" access="global">
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <lightning:navigation aura:id="navService" />
+    <aura:attribute name="listFilterName" type="String" default="Recent" />
+    <aura:attribute name="showListView" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:if isTrue="{!v.showListView}">
+        <lightning:listView aura:id="addressList" objectApiName="Address__c" listName="{!v.listFilterName}" rows="5"
+            showSearchBar="true" showActionBar="false" />
+    </aura:if>
+</aura:component>

@@ -1,0 +1,95 @@
+<aura:component>
+    <aura:attribute name="parentAccountId" type="String" />
+    <aura:attribute name="recordId" type="String" />
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <lightning:navigation aura:id="navService" />
+
+    <!-- Custom field layout (New mode) -->
+    <!-- <lightning:recordEditForm objectApiName="Address__c" recordId="{!v.recordId}" onsuccess="{!c.handleSuccess}">
+        <lightning:messages />
+
+        <div class="slds-grid slds-gutters slds-wrap">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Name" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <aura:if isTrue="{!v.recordId}">
+                    <lightning:inputField fieldName="Account__c" />
+                    <aura:set attribute="else">
+                        <lightning:inputField fieldName="Account__c" value="{!v.parentAccountId}" />
+                    </aura:set>
+                </aura:if>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Street__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="City__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="State__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="PostalCode__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Country__c" />
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-text-align_center">
+            <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+            <lightning:button variant="brand" type="submit" label="Save" />
+        </div>
+    </lightning:recordEditForm> -->
+
+    <!-- recordId present → edit existing record; absent → new record with Account pre-populated -->
+    <lightning:recordForm objectApiName="Address__c" recordId="{!v.recordId}" layoutType="Full" columns="2" mode="edit"
+        onsuccess="{!c.handleSuccess}" oncancel="{!c.handleCancel}" />
+
+    <!-- ALTERNATIVE: split edit/new because lightning:recordForm does not support defaultFieldValues pre-population.
+         Uncomment this block and remove the lightning:recordForm above if defaultFieldValues does not work.
+    <aura:if isTrue="{!v.recordId}">
+        <lightning:recordForm
+            objectApiName="Address__c"
+            recordId="{!v.recordId}"
+            layoutType="Full"
+            columns="2"
+            mode="edit"
+            onsuccess="{!c.handleSuccess}"
+            oncancel="{!c.handleCancel}" />
+        <aura:set attribute="else">
+            <lightning:recordEditForm objectApiName="Address__c" onsuccess="{!c.handleSuccess}">
+                <lightning:messages />
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="Name" />
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="Account__c" value="{!v.parentAccountId}" />
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="Street__c" />
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="City__c" />
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="State__c" />
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="PostalCode__c" />
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="Country__c" />
+                    </div>
+                </div>
+                <div class="slds-m-top_medium slds-text-align_center">
+                    <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+                    <lightning:button variant="brand" type="submit" label="Save" />
+                </div>
+            </lightning:recordEditForm>
+        </aura:set>
+    </aura:if>
+    -->
+</aura:component>
