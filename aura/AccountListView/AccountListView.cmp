@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable" access="global" controller="AccountListViewController">
+    <lightning:overlayLibrary aura:id="overlayLib" />
+
+    <aura:attribute name="listFilterName" type="String" default="Recent" />
+    <aura:attribute name="listViews" type="List" />
+    <aura:attribute name="listViewReady" type="Boolean" default="true" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:if isTrue="{!v.listViewReady}">
+        <lightning:listView
+            objectApiName="Account"
+            listName="{!v.listFilterName}"
+            rows="25"
+            showSearchBar="true"
+            showActionBar="true"
+            showRowLevelActions="true"
+            enableInlineEdit="true" />
+    </aura:if>
+</aura:component>
