@@ -1,0 +1,14 @@
+<aura:component implements="lightning:isUrlAddressable" access="global">
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <aura:attribute name="listFilterName" type="String" default="Recent" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:listView
+        objectApiName="Account"
+        listName="{!v.listFilterName}"
+        rows="25"
+        showSearchBar="true"
+        showActionBar="true"
+        showRowLevelActions="true"
+        enableInlineEdit="true" />
+</aura:component>

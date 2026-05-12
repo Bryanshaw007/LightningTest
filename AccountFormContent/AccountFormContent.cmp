@@ -1,0 +1,11 @@
+<aura:component access="global">
+    <lightning:overlayLibrary aura:id="overlayLib" />
+
+    <lightning:recordForm
+        objectApiName="Account"
+        layoutType="Full"
+        columns="2"
+        mode="edit"
+        onsuccess="{!c.handleSuccess}"
+        oncancel="{!c.handleCancel}" />
+</aura:component>
